@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+
+<div class="text-center">
+
+    <h1 class="display-5">Sistema de busqueda de usuarios sin AJAX</h1>
+    <form asp-controller="Home" asp-action="BuscarUsuarioSinAjax" method="post">
+        
+        <input type="text" placeholder="Usuario ID" name="usuarioIdSinAjax"/>
+        <input type="submit" value="Buscar"/>
+
+    </form>
+
+    
+    @{
+
+        if (ViewData.ContainsKey("usuario")){
+
+            Usuario usuario = (Usuario) ViewData["usuario"];
+
+            <p><h3>Usuario encontrado sin AJAX</h3></p>
+            <p><b>ID: </b>@usuario.id</p>
+            <p><b>Email: </b>@usuario.email</p>
+            <p><b>Direccion: </b>@usuario.direccion</p>
+            <p><b>Puntos: </b>@usuario.puntos</p>
+
+        }
+
+    }
+
+</div>
+
+<div class="text-center">
+
+    <h1 class="display-5">Sistema de busqueda de usuarios con AJAX</h1>
+
+    <input type="text" placeholder="Usuario ID" id="usuarioIdConAjax" />
+    <button id="buscarUsuario">Buscar</button>
+
+    <div id="usuario"></div>
+
+</div>
